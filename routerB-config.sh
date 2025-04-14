@@ -11,11 +11,9 @@ INTERFACES_FILE="/etc/network/interfaces"
 
 # Escribir configuración en /etc/network/interfaces
 cat <<EOF | sudo tee $INTERFACES_FILE > /dev/null
-# Interfaz física
+
 auto enp1s0
-iface enp1s0 inet static
-    address 192.168.1.1
-    netmask 255.255.255.0
+iface enp1s0 inet manual
 
 # Subred C - VLAN 10
 auto enp1s0.10
