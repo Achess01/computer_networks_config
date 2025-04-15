@@ -9,8 +9,6 @@ echo "Configurando interfaces VLAN para Router B..."
 # Ruta del archivo de interfaces
 INTERFACES_FILE="/etc/network/interfaces"
 
-mv $INTERFACES_FILE $INTERFACES_FILE.backup
-
 # Escribir configuración en /etc/network/interfaces
 cat <<EOF | sudo tee $INTERFACES_FILE > /dev/null
 
