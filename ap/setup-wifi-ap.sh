@@ -57,6 +57,7 @@ echo "==> Iniciando hostapd..."
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl restart hostapd
+sudo systemctl restart networking
 
 echo "Punto de acceso creado con IP estática en $STATIC_IP"
 echo "Recuerda configurar manualmente la IP en los dispositivos clientes (por ejemplo, 192.168.50.10, gateway 192.168.50.1)"
