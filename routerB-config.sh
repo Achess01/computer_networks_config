@@ -12,25 +12,29 @@ INTERFACES_FILE="/etc/network/interfaces"
 # Escribir configuración en /etc/network/interfaces
 cat <<EOF | sudo tee $INTERFACES_FILE > /dev/null
 
-auto enp1s0
+# auto enp1s0
+allow-hotplug enp1s0
 iface enp1s0 inet manual
 
 # Subred C - VLAN 10
-auto enp1s0.10
+# auto enp1s0.10
+allow-hotplug enp1s0.10
 iface enp1s0.10 inet static
     address 192.168.10.1
     netmask 255.255.255.128
     vlan-raw-device enp1s0
 
 # Subred D - VLAN 20
-auto enp1s0.20
+# auto enp1s0.20
+allow-hotplug enp1s0.20
 iface enp1s0.20 inet static
     address 192.168.20.1
     netmask 255.255.255.0
     vlan-raw-device enp1s0
 
 # Subred E - VLAN 30
-auto enp1s0.30
+# auto enp1s0.30
+allow-hotplug enp1s0.30
 iface enp1s0.30 inet static
     address 192.168.30.1
     netmask 255.255.254.0
