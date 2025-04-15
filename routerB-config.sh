@@ -51,3 +51,5 @@ echo "Reiniciando red..."
 sudo systemctl restart networking
 
 echo "Configuración completada en Router B."
+echo "Configurando AP"
+./ap/setup-wifi-ap.sh
