@@ -8,10 +8,6 @@ PASSPHRASE="password123"
 STATIC_IP="192.168.50.1"
 NETMASK="255.255.255.0"
 
-echo "==> Instalando paquetes necesarios (hostapd)..."
-sudo apt update
-sudo apt install -y hostapd
-
 echo "==> Deteniendo hostapd por si está corriendo..."
 sudo systemctl stop hostapd
 

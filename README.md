@@ -9,3 +9,6 @@ Este proyecto configura una red virtual con 3 subredes (VLANs) entre una máquin
 - `setup-vmC.sh`: Asigna IP estática a la VM1 (subred C / VLAN 10).
 - `setup-vmD.sh`: Asigna IP estática a la VM2 (subred D / VLAN 20).
 - `setup-vmE.sh`: Asigna IP estática a la VM3 (subred E / VLAN 30).
+
+## Requisitos
+- hostapd
