@@ -47,12 +47,6 @@ EOF
 echo "==> Apuntando hostapd al archivo de configuración..."
 sudo sed -i 's|#DAEMON_CONF=""|DAEMON_CONF="/etc/hostapd/hostapd.conf"|' /etc/default/hostapd
 
-echo "==> Habilitando reenvío de paquetes (IP forwarding)..."
-sudo sysctl -w net.ipv4.ip_forward=1
-if ! grep -q "^net.ipv4.ip_forward=1" /etc/sysctl.conf; then
-  echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf > /dev/null
-fi
-
 echo "==> Iniciando hostapd..."
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
