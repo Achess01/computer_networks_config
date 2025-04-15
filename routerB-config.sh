@@ -51,9 +51,11 @@ if ! grep -q "^net.ipv4.ip_forward=1" /etc/sysctl.conf; then
   echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf > /dev/null
 fi
 
-echo "Reiniciando red..."
-sudo systemctl restart networking
 
 echo "Configuración completada en Router B."
 echo "Configurando AP"
 ./ap/setup-wifi-ap.sh
+echo "Reiniciando red..."
+sudo systemctl restart networking
+
+echo "Configuración de AP completada."

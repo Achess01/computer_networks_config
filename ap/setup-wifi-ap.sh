@@ -26,7 +26,7 @@ sudo mkdir -p /etc/hostapd
 
 cat <<EOF | sudo tee /etc/hostapd/hostapd.conf > /dev/null
 interface=$WIFI_INTERFACE
-driver=rtl8723be
+driver=nl80211
 ssid=$SSID
 hw_mode=g
 channel=6
@@ -47,7 +47,6 @@ echo "==> Iniciando hostapd..."
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl restart hostapd
-sudo systemctl restart networking
 
 echo "Punto de acceso creado con IP estática en $STATIC_IP"
 echo "Recuerda configurar manualmente la IP en los dispositivos clientes (por ejemplo, 192.168.50.10, gateway 192.168.50.1)"
