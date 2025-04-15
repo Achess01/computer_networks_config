@@ -30,7 +30,7 @@ sudo mkdir -p /etc/hostapd
 
 cat <<EOF | sudo tee /etc/hostapd/hostapd.conf > /dev/null
 interface=$WIFI_INTERFACE
-driver=nl80211
+driver=rtl8723be
 ssid=$SSID
 hw_mode=g
 channel=6
