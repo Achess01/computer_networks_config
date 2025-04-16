@@ -12,13 +12,13 @@ iface enp1s0 inet static
     gateway 192.168.60.1
 
 # Subred A
-auto enp7s0
+allow-hotplug enp7s0
 iface enp7s0 inet static
     address 192.168.40.1
     netmask 255.255.255.0
 
 # Subred B
-auto enp8s0
+allow-hotplug enp8s0
 iface enp8s0 inet static
     address 192.168.50.1
     netmask 255.255.255.224
