@@ -45,7 +45,7 @@ allow-hotplug enx00e04c3603ba.60
 iface enx00e04c3603ba.60 inet static
     address 192.168.60.1
     netmask 255.255.255.0
-    vlan-raw-device enp1s0
+    vlan-raw-device enx00e04c3603ba
 
 # Rutas estáticas para subredes A y B
 post-up ip route add 192.168.40.0/24 via 192.168.60.2
