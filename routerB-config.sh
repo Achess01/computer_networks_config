@@ -41,7 +41,7 @@ iface enp1s0.30 inet static
     vlan-raw-device enp1s0
 
 # Subred Virtualizadora2 - VLAN 60
-allow-hotplug enp1s0.60
+allow-hotplug enx00e04c3603ba.60
 iface enx00e04c3603ba.60 inet static
     address 192.168.60.1
     netmask 255.255.255.0
