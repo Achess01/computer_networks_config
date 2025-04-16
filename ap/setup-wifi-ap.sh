@@ -5,7 +5,7 @@ set -e
 WIFI_INTERFACE="wlp2s0"
 SSID="Redes-AP"
 PASSPHRASE="password123"
-STATIC_IP="192.168.50.1"
+STATIC_IP="192.168.70.1"
 NETMASK="255.255.255.0"
 
 echo "==> Deteniendo hostapd por si está corriendo..."
@@ -49,4 +49,4 @@ sudo systemctl enable hostapd
 sudo systemctl restart hostapd
 
 echo "Punto de acceso creado con IP estática en $STATIC_IP"
-echo "Recuerda configurar manualmente la IP en los dispositivos clientes (por ejemplo, 192.168.50.10, gateway 192.168.50.1)"
+echo "Recuerda configurar manualmente la IP en los dispositivos clientes (por ejemplo, 192.168.70.10, gateway 192.168.70.1)"
