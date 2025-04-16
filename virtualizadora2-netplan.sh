@@ -3,7 +3,7 @@ set -e
 
 echo "Configurando VLAN 60 y el bridge br60..."
 # Escribir nueva configuración
-cat <<EOF | sudo tee /etc/netplan/02-network.yaml > /dev/null
+cat <<EOF | sudo tee /etc/netplan/01-network.yaml > /dev/null
 network:
   version: 2
   renderer: NetworkManager
