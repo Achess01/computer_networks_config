@@ -5,7 +5,7 @@ echo "Configurando Router A..."
 
 # Asignar IPs estáticas a las tres interfaces
 cat <<EOF | sudo tee /etc/network/interfaces > /dev/null
-auto enp1s0
+allow-hotplug enp1s0
 iface enp1s0 inet static
     address 192.168.60.2
     netmask 255.255.255.0
