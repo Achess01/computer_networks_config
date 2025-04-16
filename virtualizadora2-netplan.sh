@@ -11,14 +11,9 @@ network:
     eno1:
       dhcp4: no
 
-  vlans:
-    vlan60:
-      id: 60
-      link: eno1
-
   bridges:
     br60:
-      interfaces: [vlan60]
+      interfaces: [eno1]
       dhcp4: no
 EOF
 
