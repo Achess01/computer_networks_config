@@ -41,3 +41,12 @@ Abre virt-manager
 
 # Requisitos
 - hostapd (Router B)
+
+# Subredes
+- 192.168.10.0 - Subred C
+- 192.168.20.0 - Subred D
+- 192.168.30.0 - Subred E
+- 192.168.40.0 - Subred A
+- 192.168.50.0 - Subred B
+- 192.168.60.0 - Router A
+- 192.168.70.0 - Wifi AP
