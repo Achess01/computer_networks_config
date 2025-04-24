@@ -66,7 +66,13 @@ fi
 echo "Configuración completada en Router B."
 echo "Configurando AP"
 ./ap/setup-wifi-ap.sh
+echo "Configuración de AP completada."
+
+echo "Configurando Firewall"
+./firewall/setup-firewall.sh
+echo "Configuración del Firewall Completada."
+
 echo "Reiniciando red..."
 sudo systemctl restart networking
 
-echo "Configuración de AP completada."
+
