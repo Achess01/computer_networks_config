@@ -53,7 +53,7 @@ table inet firewall {
     ip saddr 192.168.0.0/16 ip daddr 192.168.0.0/16 log prefix "ACCEPTED: " flags all level info accept
 
     # LOG conexiones rechazadas
-    log prefix "REJECTED: " flags all level warning drop
+    log prefix "REJECTED: " flags all level warn drop
   }
 
   chain output {
