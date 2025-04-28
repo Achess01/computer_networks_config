@@ -2,7 +2,7 @@
 set -e
 
 # Variables
-WIFI_INTERFACE="wlx9c5322bb0fas5"
+WIFI_INTERFACE="wlp2s0"
 SSID="Redes-AP"
 PASSPHRASE="password123"
 STATIC_IP="192.168.70.1"
