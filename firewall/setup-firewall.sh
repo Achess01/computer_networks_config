@@ -39,6 +39,12 @@ table inet firewall {
     ip saddr 192.168.20.0/24 ip daddr 192.168.50.0/27 ct state new drop
     ip saddr 192.168.30.0/24 ip daddr 192.168.50.0/27 ct state new drop
 
+    # Bloquear conexiones de C hacia la subred D
+    ip saddr 192.168.10.0/24 ip daddr 192.168.20.0/27 ct state new drop
+
+    # Bloquear conexiones de E hacia la subred D
+    ip saddr 192.168.30.0/24 ip daddr 192.168.20.0/27 ct state new drop
+
     # Bloquear nuevas conexiones hacia METABASE
     ip daddr 192.168.40.10 ct state new drop
 
