@@ -35,18 +35,18 @@ table inet firewall {
     ct state established,related accept
 
     # Bloquear nuevas conexiones hacia la subred B
-    ip saddr 192.168.10.0/25 ip daddr 192.168.50.0/27 ct state new drop
-    ip saddr 192.168.20.0/24 ip daddr 192.168.50.0/27 ct state new drop
-    ip saddr 192.168.30.0/23 ip daddr 192.168.50.0/27 ct state new drop
+    ip saddr 192.168.10.0/25 ip daddr 192.168.50.0/27 ct state new log prefix "REJECTED: C→B" flags all level warn drop
+    ip saddr 192.168.20.0/24 ip daddr 192.168.50.0/27 ct state new log prefix "REJECTED: D→B" flags all level warn drop
+    ip saddr 192.168.30.0/23 ip daddr 192.168.50.0/27 ct state new log prefix "REJECTED: E→B" flags all level warn drop
 
     # Bloquear conexiones de C hacia la subred D
-    ip saddr 192.168.10.0/25 ip daddr 192.168.20.0/24 ct state new drop
+    ip saddr 192.168.10.0/25 ip daddr 192.168.20.0/24 ct state new log prefix "REJECTED: C→D" flags all level warn drop
 
     # Bloquear conexiones de E hacia la subred D
-    ip saddr 192.168.30.0/23 ip daddr 192.168.20.0/24 ct state new drop
+    ip saddr 192.168.30.0/23 ip daddr 192.168.20.0/24 ct state new log prefix "REJECTED: E→D" flags all level warn drop
 
     # Bloquear nuevas conexiones hacia METABASE
-    ip daddr 192.168.40.10 ct state new drop
+    ip daddr 192.168.40.10 ct state new log prefix "REJECTED: acceso a METABASE" flags all level warn drop
 
     # Subred B → A, C, D, E
     ip saddr 192.168.50.0/27 ip daddr {192.168.40.0/24, 192.168.10.0/25, 192.168.20.0/24, 192.168.30.0/23} accept
