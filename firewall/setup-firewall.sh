@@ -55,10 +55,15 @@ table inet firewall {
     ip saddr 192.168.30.0/24 ip daddr 192.168.10.0/24 accept
 
     # Permitir Home page pública en subred A
-    ip daddr 192.168.40.10 accept
+    ip daddr 192.168.40.30 accept
+
+    # Permitir conexiones de piso secundario a Home page de departamentos
+    ip saddr 192.168.10.0/24 ip daddr 192.168.40.20 accept
+    ip saddr 192.168.20.0/24 ip daddr 192.168.40.20 accept
+    ip saddr 192.168.30.0/24 ip daddr 192.168.40.20 accept
 
     # LOG conexiones aceptadas
-    ip saddr 192.168.0.0/16 ip daddr 192.168.0.0/16 log prefix "ACCEPTED: " flags all level info
+    ip saddr 192.168.0.0/16 ip daddr 192.168.0.0/16 ct state new log prefix "ACCEPTED: " flags all level info
 
     # LOG conexiones rechazadas
     log prefix "REJECTED: " flags all level warn drop
