@@ -27,7 +27,7 @@ setup_vlans() {
 add_route() {
   echo "[+] Añadiendo rutas..."
 
-  ip route add default via $GW_ISP1 dev ${IFACE}.${VLAN1_ID}
+  sudo ip route add default via $GW_ISP1 dev ${IFACE}.${VLAN1_ID}
   # Rutas base
   sudo ip route add 192.168.70.0/24 dev ${IFACE}.${VLAN1_ID} src 192.168.70.2 table isp1
   sudo ip route add default via 192.168.70.1 dev ${IFACE}.${VLAN1_ID} table isp1
@@ -55,8 +55,8 @@ cleanup() {
 case "$1" in
   start)
     setup_vlans
-    test_connectivity
     add_route
+    test_connectivity
     ;;
   stop)
     cleanup
