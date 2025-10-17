@@ -56,6 +56,7 @@ case "$1" in
   start)
     setup_vlans
     test_connectivity
+    add_route
     ;;
   stop)
     cleanup
