@@ -3,13 +3,13 @@
 # Configura las VLANs estáticas del firewall hacia los 2 ISPs simulados
 
 ### CONFIGURACIÓN ###
-IFACE="eth0"      # interfaz conectada al Ubuntu
-VLAN1_ID=10
-VLAN2_ID=20
-IP_ISP1="192.168.10.2/24"
-IP_ISP2="192.168.20.2/24"
-GW_ISP1="192.168.10.1"
-GW_ISP2="192.168.20.1"
+IFACE="enp1s0"      # interfaz conectada al Ubuntu
+VLAN1_ID=70
+VLAN2_ID=80
+IP_ISP1="192.168.70.2/24"
+IP_ISP2="192.168.80.2/24"
+GW_ISP1="192.168.70.1"
+GW_ISP2="192.168.80.1"
 
 ### FUNCIONES ###
 setup_vlans() {
