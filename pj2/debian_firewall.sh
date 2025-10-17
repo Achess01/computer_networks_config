@@ -29,10 +29,10 @@ add_route() {
 
   ip route add default via $GW_ISP1 dev ${IFACE}.${VLAN1_ID}
   # Rutas base
-  sudo ip route add $IP_ISP1 dev ${IFACE}.${VLAN1_ID} src 192.168.70.2 table isp1
+  sudo ip route add 192.168.70.0/24 dev ${IFACE}.${VLAN1_ID} src 192.168.70.2 table isp1
   sudo ip route add default via 192.168.70.1 dev ${IFACE}.${VLAN1_ID} table isp1
 
-  sudo ip route add $IP_ISP2 dev ${IFACE}.${VLAN2_ID} src 192.168.80.2 table isp2
+  sudo ip route add 192.168.80.0/24 dev ${IFACE}.${VLAN2_ID} src 192.168.80.2 table isp2
   sudo ip route add default via 192.168.80.1 dev ${IFACE}.${VLAN2_ID} table isp2
 
   sudo ip rule add from 192.168.70.2 table isp1
