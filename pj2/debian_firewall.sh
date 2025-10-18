@@ -1,23 +1,24 @@
 #!/bin/bash
 # ===========================================================
-# Configuración persistente de red - FIREWALL
+# Configuración persistente de red - FIREWALL (versión final)
 # VLANs hacia ISPs y VLANs hacia Load Balancer
 # ===========================================================
 
 cat <<'EOF' | sudo tee /etc/network/interfaces > /dev/null
 # ===========================================================
-# Archivo generado automáticamente - FIREWALL (versión corregida)
+# Archivo generado automáticamente - FIREWALL
 # ===========================================================
 
-# Loopback
+# Asegurar que el módulo 8021q (para VLANs) esté cargado
 auto lo
 iface lo inet loopback
+    post-up modprobe 8021q
 
 # Interfaz hacia los ISPs (Ubuntu)
 auto enp1s0
 iface enp1s0 inet manual
 
-# Interfaz hacia el Load Balancer (base para VLANs)
+# Interfaz hacia el Load Balancer (base de VLANs)
 auto enx00e04c3603ba
 iface enx00e04c3603ba inet manual
 
@@ -51,10 +52,13 @@ iface lan10 inet static
     address 10.10.10.1
     netmask 255.255.255.0
     vlan-raw-device enx00e04c3603ba
+    pre-up modprobe 8021q
+    pre-up ip link add link enx00e04c3603ba name lan10 type vlan id 10 || true
     post-up ip rule add from 10.10.10.0/24 table isp1
     post-up ip route add default via 192.168.70.1 dev enp1s0.70 table isp1
     pre-down ip rule del from 10.10.10.0/24 table isp1
     pre-down ip route flush table isp1
+    post-down ip link del lan10 || true
 
 # VLAN 20 - hacia Load Balancer (ISP2 interno)
 auto lan20
@@ -62,10 +66,17 @@ iface lan20 inet static
     address 10.10.20.1
     netmask 255.255.255.0
     vlan-raw-device enx00e04c3603ba
+    pre-up modprobe 8021q
+    pre-up ip link add link enx00e04c3603ba name lan20 type vlan id 20 || true
     post-up ip rule add from 10.10.20.0/24 table isp2
     post-up ip route add default via 192.168.80.1 dev enp1s0.80 table isp2
     pre-down ip rule del from 10.10.20.0/24 table isp2
     pre-down ip route flush table isp2
+    post-down ip link del lan20 || true
+
+# ===============================
+# NAT y Forwarding
+# ===============================
 
 # Habilitar reenvío de paquetes IPv4
 post-up sysctl -w net.ipv4.ip_forward=1
