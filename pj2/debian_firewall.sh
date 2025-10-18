@@ -6,7 +6,7 @@
 
 cat <<'EOF' | sudo tee /etc/network/interfaces > /dev/null
 # ===========================================================
-# Archivo generado automáticamente - FIREWALL
+# Archivo generado automáticamente - FIREWALL (versión corregida)
 # ===========================================================
 
 # Loopback
@@ -17,7 +17,7 @@ iface lo inet loopback
 auto enp1s0
 iface enp1s0 inet manual
 
-# Interfaz hacia el Load Balancer
+# Interfaz hacia el Load Balancer (base para VLANs)
 auto enx00e04c3603ba
 iface enx00e04c3603ba inet manual
 
@@ -46,8 +46,8 @@ iface enp1s0.80 inet static
 # ===============================
 
 # VLAN 10 - hacia Load Balancer (ISP1 interno)
-auto enx00e04c3603ba.10
-iface enx00e04c3603ba.10 inet static
+auto lan10
+iface lan10 inet static
     address 10.10.10.1
     netmask 255.255.255.0
     vlan-raw-device enx00e04c3603ba
@@ -57,8 +57,8 @@ iface enx00e04c3603ba.10 inet static
     pre-down ip route flush table isp1
 
 # VLAN 20 - hacia Load Balancer (ISP2 interno)
-auto enx00e04c3603ba.20
-iface enx00e04c3603ba.20 inet static
+auto lan20
+iface lan20 inet static
     address 10.10.20.1
     netmask 255.255.255.0
     vlan-raw-device enx00e04c3603ba
